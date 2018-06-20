@@ -3,6 +3,13 @@ const Cinema = require('../models/cinema.js');
 const Film = require('../models/film.js');
 
 describe('Cinema', function () {
+  let moonlight;
+  let bladeRunner;
+  let dunkirk;
+  let blackPanther;
+  let trainspotting;
+  let cinema;
+
 
   beforeEach(function() {
     moonlight = new Film('Moonlight', 'drama', 2016, 111);
@@ -24,12 +31,15 @@ describe('Cinema', function () {
 
   });
 
-  xit('should be able to find a film by title', function () {
-
+  it('should be able to find a film by title', function () {
+    const actual = cinema.findByFilmTitle('Moonlight');
+    assert.deepStrictEqual(actual, moonlight);
   });
 
-  xit('should be able to filter films by genre', function () {
-
+  it('should be able to filter films by genre', function () {
+    const actual = cinema.findByGenre('drama');
+    const expected = [moonlight, trainspotting];
+    assert.deepStrictEqual(actual, expected);
   });
 
   xit('should be able to check whether there are some films from a particular year', function () {
@@ -44,8 +54,9 @@ describe('Cinema', function () {
 
   });
 
-  xit('should be able to calculate total running time of all films', function () {
-
+  it('should be able to calculate total running time of all films', function () {
+    const actual = cinema.totalFilmLength()
+    assert.strictEqual(actual, 622);
   });
 
   xit('should be able to filter films by year', function () {
