@@ -25,9 +25,17 @@ Cinema.prototype.totalFilmLength = function (){
 
 
 Cinema.prototype.findByFilmTitle = function(title){
-  const film.title = this.films.map((film) =>{
-    return film;
-  });
-}
+  const result = this.films.find((film)=> {
+    return film.title === title;
+  })
+  return result;
+};
 
+
+Cinema.prototype.listOfTitles = function() {
+ const result = this.films.map((film) =>{
+   return film.title;
+ })
+ return result;
+}
 module.exports = Cinema;
