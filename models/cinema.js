@@ -4,6 +4,20 @@ const Cinema = function (films) {
 
 // films = [moonlight, bladeRunner, dunkirk, blackPanther, trainspotting];
 
+Cinema.prototype.listOfTitles = function() {
+ const result = this.films.map((film) =>{
+   return film.title;
+ })
+ return result;
+}
+
+Cinema.prototype.findByFilmTitle = function(title){
+  const result = this.films.find((film)=> {
+    return film.title === title;
+  })
+  return result;
+};
+
 Cinema.prototype.findByGenre = function (genre){
   const foundFilms = [];
   for (const film of this.films){
@@ -12,6 +26,13 @@ Cinema.prototype.findByGenre = function (genre){
     }
   }
   return foundFilms;
+}
+
+Cinema.prototype.findFilmByYear = function(year) {
+  const result = this.films.filter((film) =>{
+    return film.year === year;
+  })
+  return result;
 }
 
 Cinema.prototype.totalFilmLength = function (){
@@ -24,18 +45,10 @@ Cinema.prototype.totalFilmLength = function (){
 }
 
 
-Cinema.prototype.findByFilmTitle = function(title){
-  const result = this.films.find((film)=> {
-    return film.title === title;
-  })
-  return result;
-};
 
 
-Cinema.prototype.listOfTitles = function() {
- const result = this.films.map((film) =>{
-   return film.title;
- })
- return result;
-}
+
+
+
+
 module.exports = Cinema;
